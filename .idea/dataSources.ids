@@ -1,0 +1,1133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - people_shoes@localhost" uuid="12dbef38-fc80-459b-ab1c-bd2b7865c746">
+    <database-info product="MySQL" version="5.7.17-0ubuntu0.16.04.1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.5">
+      <schema id="1" name="people_shoes"/>
+      <table id="2" parent="1" name="brand"/>
+      <table id="3" parent="1" name="cart"/>
+      <table id="4" parent="1" name="collection_shoes"/>
+      <table id="5" parent="1" name="color"/>
+      <table id="6" parent="1" name="color_shoes"/>
+      <table id="7" parent="1" name="material"/>
+      <table id="8" parent="1" name="mens_collections"/>
+      <table id="9" parent="1" name="price"/>
+      <table id="10" parent="1" name="shoes"/>
+      <table id="11" parent="1" name="size"/>
+      <table id="12" parent="1" name="size_shoes"/>
+      <table id="13" parent="1" name="users"/>
+      <table id="14" parent="1" name="user_roles"/>
+      <routine id="15" parent="1" name="create_brand">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="16" parent="1" name="create_cart">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="17" parent="1" name="create_collection_shoes">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="18" parent="1" name="create_color">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="19" parent="1" name="create_color_shoes">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="20" parent="1" name="create_material">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="21" parent="1" name="create_men_collection">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="22" parent="1" name="create_price">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="23" parent="1" name="create_shoes">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="24" parent="1" name="create_size">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="25" parent="1" name="create_size_shoes">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="26" parent="1" name="create_user">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="27" parent="1" name="delete_brand">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="28" parent="1" name="delete_cart">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="29" parent="1" name="delete_collection_shoes">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="30" parent="1" name="delete_color">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="31" parent="1" name="delete_color_shoes">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="32" parent="1" name="delete_material">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="33" parent="1" name="delete_men_collection">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="34" parent="1" name="delete_price">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="35" parent="1" name="delete_shoes">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="36" parent="1" name="delete_size">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="37" parent="1" name="delete_size_shoes">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="38" parent="1" name="delete_user">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="39" parent="1" name="selectAll_brand">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="40" parent="1" name="selectAll_cart">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="41" parent="1" name="selectAll_collection_shoes">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="42" parent="1" name="selectAll_color">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="43" parent="1" name="selectAll_color_shoes">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="44" parent="1" name="selectAll_material">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="45" parent="1" name="selectAll_men_collection">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="46" parent="1" name="selectAll_price">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="47" parent="1" name="selectAll_shoes">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="48" parent="1" name="selectAll_size">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="49" parent="1" name="selectAll_size_shoes">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="50" parent="1" name="selectAll_user">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="51" parent="1" name="select_brand">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="52" parent="1" name="select_cart">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="53" parent="1" name="select_collection_shoes">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="54" parent="1" name="select_collection_shoes_byCollection">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="55" parent="1" name="select_collection_shoes_byShoes">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="56" parent="1" name="select_color">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="57" parent="1" name="select_color_shoes">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="58" parent="1" name="select_color_shoesByColor">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="59" parent="1" name="select_color_shoesByShoes">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="60" parent="1" name="select_material">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="61" parent="1" name="select_men_collection">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="62" parent="1" name="select_price">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="63" parent="1" name="select_price_byMinMax">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="64" parent="1" name="select_shoes">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="65" parent="1" name="select_shoes_byBrand">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="66" parent="1" name="select_shoes_byMaterial">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="67" parent="1" name="select_size">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="68" parent="1" name="select_size_byMinMax">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="69" parent="1" name="select_size_shoes">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="70" parent="1" name="select_size_shoes_byShoes">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="71" parent="1" name="select_size_shoes_bySize">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="72" parent="1" name="select_user">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="73" parent="1" name="update_brand">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="74" parent="1" name="update_cart">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="75" parent="1" name="update_collection_shoes">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="76" parent="1" name="update_color">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="77" parent="1" name="update_color_shoes">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="78" parent="1" name="update_material">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="79" parent="1" name="update_men_collection">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="80" parent="1" name="update_price">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="81" parent="1" name="update_shoes">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="82" parent="1" name="update_size">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="83" parent="1" name="update_size_shoes">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="84" parent="1" name="update_user">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <column id="85" parent="2" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="86" parent="2" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="87" parent="2" name="info_RU">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="88" parent="2" name="info_EU">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="89" parent="2" name="logo">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <key id="90" parent="2" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="91" parent="3" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="92" parent="3" name="id_user">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="93" parent="3" name="id_shoes">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="94" parent="3" name="fk_cart_2_idx">
+        <columns>id_shoes</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="95" parent="3" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="96" parent="3" name="fk_cart_2">
+        <columns>id_shoes</columns>
+        <ref-key>~.shoes.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="97" parent="4" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="98" parent="4" name="id_collection">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="99" parent="4" name="id_shoes">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="100" parent="4" name="id_collection_idx">
+        <columns>id_collection</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="101" parent="4" name="id_shoes_idx">
+        <columns>id_shoes</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="102" parent="4" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="103" parent="4" name="id_collection">
+        <columns>id_collection</columns>
+        <ref-key>~.mens_collections.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="104" parent="4" name="id_shoes1">
+        <columns>id_shoes</columns>
+        <ref-key>~.shoes.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="105" parent="5" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="106" parent="5" name="name_RU">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="107" parent="5" name="name_EU">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="108" parent="5" name="image">
+        <data-type>varchar(45)</data-type>
+      </column>
+      <key id="109" parent="5" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="110" parent="6" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="111" parent="6" name="id_color">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="112" parent="6" name="id_shoes">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="113" parent="6" name="amount">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="114" parent="6" name="id_color_idx">
+        <columns>id_color</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="115" parent="6" name="id_shoes2_idx">
+        <columns>id_shoes</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="116" parent="6" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="117" parent="6" name="id_color">
+        <columns>id_color</columns>
+        <ref-key>~.color.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="118" parent="6" name="id_shoes2">
+        <columns>id_shoes</columns>
+        <ref-key>~.shoes.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="119" parent="7" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="120" parent="7" name="name_RU">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="121" parent="7" name="name_EU">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <key id="122" parent="7" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="123" parent="8" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="124" parent="8" name="collection_name_RU">
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="125" parent="8" name="collection_name_EU">
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="126" parent="8" name="amount">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="127" parent="8" name="image">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="128" parent="8" name="infoEu">
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="129" parent="8" name="infoRu">
+        <data-type>varchar(45)</data-type>
+      </column>
+      <key id="130" parent="8" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="131" parent="9" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="132" parent="9" name="id_shoes">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="133" parent="9" name="priceEU">
+        <mandatory>1</mandatory>
+        <data-type>double</data-type>
+      </column>
+      <column id="134" parent="9" name="priceRU">
+        <mandatory>1</mandatory>
+        <data-type>double</data-type>
+      </column>
+      <key id="135" parent="9" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="136" parent="10" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="137" parent="10" name="name_RU">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="138" parent="10" name="name_EU">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="139" parent="10" name="id_brand">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="140" parent="10" name="id_material">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="141" parent="10" name="amount">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="142" parent="10" name="image">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <index id="143" parent="10" name="id_brand_idx">
+        <columns>id_brand</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="144" parent="10" name="id_material_idx">
+        <columns>id_material</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="145" parent="10" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="146" parent="10" name="id_brand">
+        <columns>id_brand</columns>
+        <ref-key>~.brand.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="147" parent="10" name="id_material">
+        <columns>id_material</columns>
+        <ref-key>~.material.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="148" parent="11" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="149" parent="11" name="name_EU">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="150" parent="11" name="name_US">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="151" parent="11" name="name_UK">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <key id="152" parent="11" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="153" parent="12" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="154" parent="12" name="id_size">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="155" parent="12" name="id_shoes">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="156" parent="12" name="amount">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="157" parent="12" name="id_shoes_idx">
+        <columns>id_shoes</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="158" parent="12" name="id_size_idx">
+        <columns>id_size</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="159" parent="12" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="160" parent="12" name="id_shoes">
+        <columns>id_shoes</columns>
+        <ref-key>~.shoes.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="161" parent="12" name="id_size">
+        <columns>id_size</columns>
+        <ref-key>~.size.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="162" parent="13" name="username">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="163" parent="13" name="password">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="164" parent="13" name="enabled">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+        <default-expression>&apos;1&apos;</default-expression>
+      </column>
+      <key id="165" parent="13" name="PRIMARY">
+        <columns>username</columns>
+        <primary>1</primary>
+      </key>
+      <column id="166" parent="14" name="user_role_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="167" parent="14" name="username">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="168" parent="14" name="role">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <index id="169" parent="14" name="fk_username_idx">
+        <columns>username</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="170" parent="14" name="uni_username_role">
+        <columns>role
+username</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="171" parent="14" name="PRIMARY">
+        <columns>user_role_id</columns>
+        <primary>1</primary>
+      </key>
+      <key id="172" parent="14" name="uni_username_role">
+        <columns>role
+username</columns>
+        <underlying-index>uni_username_role</underlying-index>
+      </key>
+      <foreign-key id="173" parent="14" name="fk_username">
+        <columns>username</columns>
+        <ref-key>~.users.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <argument id="174" parent="15" name="n">
+        <direction>IN</direction>
+        <data-type>varchar(45)</data-type>
+      </argument>
+      <argument id="175" parent="15" name="infoR">
+        <direction>IN</direction>
+        <data-type>varchar(45)</data-type>
+      </argument>
+      <argument id="176" parent="15" name="infoE">
+        <direction>IN</direction>
+        <data-type>varchar(45)</data-type>
+      </argument>
+      <argument id="177" parent="15" name="l">
+        <direction>IN</direction>
+        <data-type>varchar(45)</data-type>
+      </argument>
+      <argument id="178" parent="16" name="user">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="179" parent="16" name="shoes">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="180" parent="17" name="collection">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="181" parent="17" name="shoes">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="182" parent="18" name="nameR">
+        <direction>IN</direction>
+        <data-type>varchar(45)</data-type>
+      </argument>
+      <argument id="183" parent="18" name="nameE">
+        <direction>IN</direction>
+        <data-type>varchar(45)</data-type>
+      </argument>
+      <argument id="184" parent="18" name="img">
+        <direction>IN</direction>
+        <data-type>varchar(45)</data-type>
+      </argument>
+      <argument id="185" parent="19" name="color">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="186" parent="19" name="shoes">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="187" parent="19" name="a">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="188" parent="20" name="name">
+        <direction>IN</direction>
+        <data-type>varchar(45)</data-type>
+      </argument>
+      <argument id="189" parent="20" name="nameE">
+        <direction>IN</direction>
+        <data-type>varchar(45)</data-type>
+      </argument>
+      <argument id="190" parent="21" name="nameRu">
+        <direction>IN</direction>
+        <data-type>varchar(20)</data-type>
+      </argument>
+      <argument id="191" parent="21" name="nameEu">
+        <direction>IN</direction>
+        <data-type>varchar(20)</data-type>
+      </argument>
+      <argument id="192" parent="21" name="amoun">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="193" parent="21" name="img">
+        <direction>IN</direction>
+        <data-type>varchar(20)</data-type>
+      </argument>
+      <argument id="194" parent="21" name="infoR">
+        <direction>IN</direction>
+        <data-type>varchar(20)</data-type>
+      </argument>
+      <argument id="195" parent="21" name="infoE">
+        <direction>IN</direction>
+        <data-type>varchar(20)</data-type>
+      </argument>
+      <argument id="196" parent="22" name="shoes">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="197" parent="22" name="pue">
+        <direction>IN</direction>
+        <data-type>double</data-type>
+      </argument>
+      <argument id="198" parent="22" name="pru">
+        <direction>IN</direction>
+        <data-type>double</data-type>
+      </argument>
+      <argument id="199" parent="23" name="R">
+        <direction>IN</direction>
+        <data-type>varchar(45)</data-type>
+      </argument>
+      <argument id="200" parent="23" name="E">
+        <direction>IN</direction>
+        <data-type>varchar(45)</data-type>
+      </argument>
+      <argument id="201" parent="23" name="b">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="202" parent="23" name="m">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="203" parent="23" name="a">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="204" parent="23" name="img">
+        <direction>IN</direction>
+        <data-type>varchar(45)</data-type>
+      </argument>
+      <argument id="205" parent="24" name="eu">
+        <direction>IN</direction>
+        <data-type>varchar(45)</data-type>
+      </argument>
+      <argument id="206" parent="24" name="us">
+        <direction>IN</direction>
+        <data-type>varchar(45)</data-type>
+      </argument>
+      <argument id="207" parent="24" name="uk">
+        <direction>IN</direction>
+        <data-type>varchar(45)</data-type>
+      </argument>
+      <argument id="208" parent="25" name="size">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="209" parent="25" name="shoes">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="210" parent="25" name="a">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="211" parent="26" name="l">
+        <direction>IN</direction>
+        <data-type>varchar(45)</data-type>
+      </argument>
+      <argument id="212" parent="26" name="p">
+        <direction>IN</direction>
+        <data-type>varchar(45)</data-type>
+      </argument>
+      <argument id="213" parent="26" name="r">
+        <direction>IN</direction>
+        <data-type>varchar(45)</data-type>
+      </argument>
+      <argument id="214" parent="27" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="215" parent="28" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="216" parent="29" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="217" parent="30" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="218" parent="31" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="219" parent="32" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="220" parent="33" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="221" parent="34" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="222" parent="35" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="223" parent="36" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="224" parent="37" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="225" parent="38" name="i">
+        <direction>IN</direction>
+        <data-type>varchar(45)</data-type>
+      </argument>
+      <argument id="226" parent="51" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="227" parent="52" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="228" parent="53" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="229" parent="54" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="230" parent="55" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="231" parent="56" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="232" parent="57" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="233" parent="58" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="234" parent="59" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="235" parent="60" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="236" parent="61" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="237" parent="62" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="238" parent="63" name="min">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="239" parent="63" name="max">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="240" parent="64" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="241" parent="65" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="242" parent="66" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="243" parent="67" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="244" parent="68" name="min">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="245" parent="68" name="max">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="246" parent="69" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="247" parent="70" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="248" parent="71" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="249" parent="72" name="i">
+        <direction>IN</direction>
+        <data-type>varchar(45)</data-type>
+      </argument>
+      <argument id="250" parent="73" name="n">
+        <direction>IN</direction>
+        <data-type>varchar(45)</data-type>
+      </argument>
+      <argument id="251" parent="73" name="infoR">
+        <direction>IN</direction>
+        <data-type>varchar(45)</data-type>
+      </argument>
+      <argument id="252" parent="73" name="infoE">
+        <direction>IN</direction>
+        <data-type>varchar(45)</data-type>
+      </argument>
+      <argument id="253" parent="73" name="l">
+        <direction>IN</direction>
+        <data-type>varchar(45)</data-type>
+      </argument>
+      <argument id="254" parent="73" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="255" parent="74" name="user">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="256" parent="74" name="shoes">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="257" parent="74" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="258" parent="75" name="collection">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="259" parent="75" name="shoes">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="260" parent="75" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="261" parent="76" name="nameR">
+        <direction>IN</direction>
+        <data-type>varchar(45)</data-type>
+      </argument>
+      <argument id="262" parent="76" name="nameE">
+        <direction>IN</direction>
+        <data-type>varchar(45)</data-type>
+      </argument>
+      <argument id="263" parent="76" name="img">
+        <direction>IN</direction>
+        <data-type>varchar(45)</data-type>
+      </argument>
+      <argument id="264" parent="76" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="265" parent="77" name="color">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="266" parent="77" name="shoes">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="267" parent="77" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="268" parent="78" name="nameRU">
+        <direction>IN</direction>
+        <data-type>varchar(45)</data-type>
+      </argument>
+      <argument id="269" parent="78" name="nameEU">
+        <direction>IN</direction>
+        <data-type>varchar(45)</data-type>
+      </argument>
+      <argument id="270" parent="78" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="271" parent="79" name="RU">
+        <direction>IN</direction>
+        <data-type>varchar(20)</data-type>
+      </argument>
+      <argument id="272" parent="79" name="EU">
+        <direction>IN</direction>
+        <data-type>varchar(20)</data-type>
+      </argument>
+      <argument id="273" parent="79" name="a">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="274" parent="79" name="img">
+        <direction>IN</direction>
+        <data-type>varchar(20)</data-type>
+      </argument>
+      <argument id="275" parent="79" name="infoR">
+        <direction>IN</direction>
+        <data-type>varchar(20)</data-type>
+      </argument>
+      <argument id="276" parent="79" name="infoE">
+        <direction>IN</direction>
+        <data-type>varchar(20)</data-type>
+      </argument>
+      <argument id="277" parent="79" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="278" parent="80" name="shoes">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="279" parent="80" name="pue">
+        <direction>IN</direction>
+        <data-type>double</data-type>
+      </argument>
+      <argument id="280" parent="80" name="pru">
+        <direction>IN</direction>
+        <data-type>double</data-type>
+      </argument>
+      <argument id="281" parent="80" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="282" parent="81" name="R">
+        <direction>IN</direction>
+        <data-type>varchar(45)</data-type>
+      </argument>
+      <argument id="283" parent="81" name="E">
+        <direction>IN</direction>
+        <data-type>varchar(45)</data-type>
+      </argument>
+      <argument id="284" parent="81" name="b">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="285" parent="81" name="m">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="286" parent="81" name="a">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="287" parent="81" name="img">
+        <direction>IN</direction>
+        <data-type>varchar(45)</data-type>
+      </argument>
+      <argument id="288" parent="81" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="289" parent="82" name="eu">
+        <direction>IN</direction>
+        <data-type>varchar(45)</data-type>
+      </argument>
+      <argument id="290" parent="82" name="us">
+        <direction>IN</direction>
+        <data-type>varchar(45)</data-type>
+      </argument>
+      <argument id="291" parent="82" name="uk">
+        <direction>IN</direction>
+        <data-type>varchar(45)</data-type>
+      </argument>
+      <argument id="292" parent="82" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="293" parent="83" name="size">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="294" parent="83" name="shoes">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="295" parent="83" name="a">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="296" parent="83" name="i">
+        <direction>IN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="297" parent="84" name="l">
+        <direction>IN</direction>
+        <data-type>varchar(45)</data-type>
+      </argument>
+      <argument id="298" parent="84" name="p">
+        <direction>IN</direction>
+        <data-type>varchar(45)</data-type>
+      </argument>
+      <argument id="299" parent="84" name="r">
+        <direction>IN</direction>
+        <data-type>varchar(45)</data-type>
+      </argument>
+      <argument id="300" parent="84" name="i">
+        <direction>IN</direction>
+        <data-type>varchar(45)</data-type>
+      </argument>
+    </database-model>
+  </data-source>
+</component>
