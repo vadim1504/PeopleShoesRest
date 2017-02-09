@@ -1,7 +1,9 @@
 package by.training.rest.dao.size;
 
 import by.training.rest.dao.AbstractDAO;
+import by.training.rest.dao.user.UserMapper;
 import by.training.rest.model.Size;
+import by.training.rest.model.User;
 
 import java.util.List;
 
@@ -12,8 +14,12 @@ public class SizeJDBCTemplate extends AbstractDAO<Size,Integer> {
     }
 
     public Size getEntity(Integer id) {
-        Size size = jdbcTemplateObject.queryForObject(env.getProperty("getSize"), new Object[]{id}, new SizeMapper());
-        return size;
+        List<Size> sizeList = jdbcTemplateObject.query(env.getProperty("getSize"), new Object[]{id}, new SizeMapper());
+        if(sizeList.isEmpty()){
+            return null;
+        }else{
+            return sizeList.get(0);
+        }
     }
 
     public List<Size> getListEntity() {

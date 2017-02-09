@@ -23,8 +23,7 @@ public class PeopleShoesInitializer extends AbstractAnnotationConfigDispatcherSe
     
     @Override
     protected Filter[] getServletFilters() {
-    	Filter [] singleton = { new CORSFilter()};
+    	Filter [] singleton = { new CORSFilter() };
     	return singleton;
     }
- 
 }

@@ -9,12 +9,16 @@ import java.util.List;
 public class UserJDBCTemplate extends AbstractDAO<User,String> {
 
     public void create(User entity) {
-        jdbcTemplateObject.update(env.getProperty("createUser"), entity.getLogin(), entity.getPassword(),"1");
+        jdbcTemplateObject.update(env.getProperty("createUser"), entity.getUsername(), entity.getPassword(),"1");
     }
 
     public User getEntity(String username) {
-        User user = jdbcTemplateObject.queryForObject(env.getProperty("getUser"), new Object[]{username}, new UserMapper());
-        return user;
+        List<User> users = jdbcTemplateObject.query(env.getProperty("getUser"), new Object[]{username}, new UserMapper());
+        if(users.isEmpty()){
+            return null;
+        }else{
+            return users.get(0);
+        }
     }
 
     public List<User> getListEntity() {
@@ -27,6 +31,6 @@ public class UserJDBCTemplate extends AbstractDAO<User,String> {
     }
 
     public void update(String username, User entity) {
-        jdbcTemplateObject.update(env.getProperty("updateUser"),entity.getLogin(),entity.getPassword(),entity.getEnabled(),username);
+        jdbcTemplateObject.update(env.getProperty("updateUser"),entity.getUsername(),entity.getPassword(),entity.getEnabled(),username);
     }
 }

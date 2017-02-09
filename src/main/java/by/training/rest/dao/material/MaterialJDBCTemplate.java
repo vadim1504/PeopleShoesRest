@@ -1,7 +1,9 @@
 package by.training.rest.dao.material;
 
 import by.training.rest.dao.AbstractDAO;
+import by.training.rest.dao.user.UserMapper;
 import by.training.rest.model.Material;
+import by.training.rest.model.User;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
@@ -14,8 +16,12 @@ public class MaterialJDBCTemplate extends AbstractDAO<Material,Integer> {
     }
 
     public Material getEntity(Integer id) {
-        Material material = jdbcTemplateObject.queryForObject(env.getProperty("getMaterial"), new Object[]{id}, new MaterialMapper());
-        return material;
+        List<Material> materialList = jdbcTemplateObject.query(env.getProperty("getMaterial"), new Object[]{id}, new MaterialMapper());
+        if(materialList.isEmpty()){
+            return null;
+        }else{
+            return materialList.get(0);
+        }
     }
 
     public List<Material> getListEntity() {

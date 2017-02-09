@@ -1,7 +1,9 @@
 package by.training.rest.dao.sizeShoes;
 
 import by.training.rest.dao.AbstractDAO;
+import by.training.rest.dao.user.UserMapper;
 import by.training.rest.model.SizeShoes;
+import by.training.rest.model.User;
 
 import java.util.List;
 
@@ -12,8 +14,12 @@ public class SizeShoesJDBCTemplate extends AbstractDAO<SizeShoes,Integer>{
     }
 
     public SizeShoes getEntity(Integer id) {
-        SizeShoes sizeShoes = jdbcTemplateObject.queryForObject(env.getProperty("getSizeShoes"), new Object[]{id}, new SizeShoesMapper());
-        return sizeShoes;
+        List<SizeShoes> sizeShoesList = jdbcTemplateObject.query(env.getProperty("getSizeShoes"), new Object[]{id}, new SizeShoesMapper());
+        if(sizeShoesList.isEmpty()){
+            return null;
+        }else{
+            return sizeShoesList.get(0);
+        }
     }
 
     public List<SizeShoes> getListEntity() {

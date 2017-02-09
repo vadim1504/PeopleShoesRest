@@ -191,4 +191,23 @@ public class Shoes {
     public int hashCode() {
         return id;
     }
+
+    @Override
+    public String toString() {
+        return "Shoes{" +
+                "id=" + id +
+                ", idMaterial=" + idMaterial +
+                ", material=" + material +
+                ", brand=" + brand +
+                ", idBrand=" + idBrand +
+                ", nameRu='" + nameRu + '\'' +
+                ", nameEu='" + nameEu + '\'' +
+                ", amount=" + amount +
+                ", image='" + image + '\'' +
+                ", price=" + price +
+                ", colorList=" + colorList +
+                ", sizes=" + sizes +
+                ", menCollections=" + menCollections +
+                '}';
+    }
 }

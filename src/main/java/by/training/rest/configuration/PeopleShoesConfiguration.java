@@ -11,13 +11,17 @@ import by.training.rest.dao.shoes.ShoesJDBCTemplate;
 import by.training.rest.dao.size.SizeJDBCTemplate;
 import by.training.rest.dao.sizeShoes.SizeShoesJDBCTemplate;
 import by.training.rest.dao.user.UserJDBCTemplate;
+import by.training.rest.dao.user.UserRolesJDBCTemplate;
 import by.training.rest.soap.PriceClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jndi.JndiTemplate;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import javax.naming.NamingException;
 import javax.sql.DataSource;
@@ -102,6 +106,13 @@ public class PeopleShoesConfiguration {
         SizeShoesJDBCTemplate sizeShoesJDBCTemplate = new SizeShoesJDBCTemplate();
         sizeShoesJDBCTemplate.setDataSource(dataSource);
         return sizeShoesJDBCTemplate;
+    }
+
+    @Bean(name = "userRolesJDBCTemplate")
+    public UserRolesJDBCTemplate userRolesJDBCTemplate(DataSource dataSource){
+        UserRolesJDBCTemplate userRolesJDBCTemplate = new UserRolesJDBCTemplate();
+        userRolesJDBCTemplate.setDataSource(dataSource);
+        return userRolesJDBCTemplate;
     }
 
     @Bean

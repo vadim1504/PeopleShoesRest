@@ -17,58 +17,71 @@ public class ShoesJDBCTemplate extends AbstractDAO<Shoes,Integer> {
     public PriceClient priceClient;
 
     public void create(Shoes entity) {
-        jdbcTemplateObject.update(env.getProperty("createShoes"), entity.getNameRu(), entity.getNameEu(),entity.getIdBrand(),entity.getIdMaterial(),entity.getAmount(),entity.getImage());
-        priceClient.createPrice(entity.getPrice());
+        try {
+            jdbcTemplateObject.update(env.getProperty("createShoes"), entity.getNameRu(), entity.getNameEu(), entity.getIdBrand(), entity.getIdMaterial(), entity.getAmount(), entity.getImage());
+            int id = jdbcTemplateObject.queryForObject("select id from shoes where name_Ru=? and name_Eu=? and amount=? and id_brand=? and id_material=?", new Object[]{entity.getNameRu(), entity.getNameEu(), entity.getAmount(), entity.getIdBrand(), entity.getIdMaterial()}, Integer.class);
+            Price price = entity.getPrice();
+            price.setIdShoes(id);
+            priceClient.createPrice(price);
+        }catch (Exception e){}// проверка или откат
     }
 
     public Shoes getEntity(Integer id) {
-        Shoes shoes = jdbcTemplateObject.queryForObject(env.getProperty("getShoes"), new Object[]{id}, new ShoesMapper());
-        Price price = priceClient.getPrice(shoes.getId());
+        Shoes shoes;
+        List<Shoes> shoesList = jdbcTemplateObject.query(env.getProperty("getShoes"), new Object[]{id}, new ShoesMapper());
+        if(shoesList.isEmpty()){
+            return null;
+        }else{
+            shoes = shoesList.get(0);
+        }
+        Price price = null;
+        try {
+            price = priceClient.getPrice(shoes.getId());
+        }catch (Exception e){}
         shoes.setPrice(price);
         return shoes;
     }
 
     public List<Shoes> getListEntity() {
         List<Shoes> shoes = jdbcTemplateObject.query(env.getProperty("getListShoes"),new ShoesMapper());
-        List<Price> prices = priceClient.getListPrice();
-        for (Shoes s: shoes){
-            for(Price p: prices)
-                if(p.getIdShoes()==s.getId()){
-                    s.setPrice(p);
-                }
-        }
+        try {
+            List<Price> prices = priceClient.getListPrice();
+            for (Shoes s : shoes) {
+                for (Price p : prices)
+                    if (p.getIdShoes() == s.getId()) {
+                        s.setPrice(p);
+                    }
+            }
+        }catch (Exception e){}
         return shoes;
     }
 
     public List<Shoes> getListEntityByPrice(int min,int max) {
         List<Shoes> shoes = new ArrayList<Shoes>();
+        try {
         List<Price> prices = priceClient.getListPriceByPrice(min,max);
         for (Price p : prices) {
             shoes.add(getEntity(p.getIdShoes()));
-        }
+        }}catch (Exception e){}
         return shoes;
     }
 
     public List<Shoes> getListShoesByBrand(int idBrand){
         List<Shoes> shoes = jdbcTemplateObject.query(env.getProperty("getListShoesByBrand"),new Object[]{idBrand},new ShoesMapper());
-        List<Price> prices = priceClient.getListPrice();
-        for (Shoes s: shoes){
-            for(Price p: prices)
-                if(p.getIdShoes()==s.getId()){
-                    s.setPrice(p);
-                }
-        }
+            for (Shoes s : shoes) {
+                try {
+                s.setPrice(priceClient.getPrice(s.getId()));
+                }catch (Exception e){}
+            }
         return shoes;
     }
 
     public List<Shoes> getListShoesByMaterial(int idMaterial){
         List<Shoes> shoes = jdbcTemplateObject.query(env.getProperty("getListShoesByMaterial"),new Object[]{idMaterial},new ShoesMapper());
-        List<Price> prices = priceClient.getListPrice();
-        for (Shoes s: shoes){
-            for(Price p: prices)
-                if(p.getIdShoes()==s.getId()){
-                    s.setPrice(p);
-                }
+        for (Shoes s : shoes) {
+            try {
+                s.setPrice(priceClient.getPrice(s.getId()));
+            }catch (Exception e){}
         }
         return shoes;
     }

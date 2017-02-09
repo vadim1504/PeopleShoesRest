@@ -1,7 +1,9 @@
 package by.training.rest.dao.collectionShoes;
 
 import by.training.rest.dao.AbstractDAO;
+import by.training.rest.dao.sizeShoes.SizeShoesMapper;
 import by.training.rest.model.CollectionShoes;
+import by.training.rest.model.SizeShoes;
 
 import java.util.List;
 
@@ -13,8 +15,12 @@ public class CollectionShoesJDBCTemplate extends AbstractDAO<CollectionShoes,Int
     }
 
     public CollectionShoes getEntity(Integer id) {
-        CollectionShoes collectionShoes = jdbcTemplateObject.queryForObject(env.getProperty("getCollectionShoes"), new Object[]{id}, new CollectionShoesMapper());
-        return collectionShoes;
+        List<CollectionShoes> collectionShoesList = jdbcTemplateObject.query(env.getProperty("getCollectionShoes"), new Object[]{id}, new CollectionShoesMapper());
+        if(collectionShoesList.isEmpty()){
+            return null;
+        }else{
+            return collectionShoesList.get(0);
+        }
     }
 
     public List<CollectionShoes> getListEntity() {

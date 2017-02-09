@@ -9,11 +9,13 @@ import by.training.rest.dao.menCollection.MenCollectionJDBCTemplate;
 import by.training.rest.dao.shoes.ShoesJDBCTemplate;
 import by.training.rest.dao.size.SizeJDBCTemplate;
 import by.training.rest.dao.sizeShoes.SizeShoesJDBCTemplate;
-import by.training.rest.exception.RestPreconditions;
 import by.training.rest.model.*;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -25,7 +27,6 @@ import java.util.Set;
 @RestController
 @RequestMapping(value = "/shoes")
 class ShoesController {
-
     @Autowired
     public ShoesJDBCTemplate shoesJDBCTemplate;
     @Autowired
@@ -45,12 +46,20 @@ class ShoesController {
     @Autowired
     public SizeJDBCTemplate sizeJDBCTemplate;
 
-    @GetMapping(params = {"id"})
-    public Shoes getShoes(@RequestParam(value = "id") int id){
+    private final Logger logger = Logger.getLogger(ShoesController.class);
 
-
+    @GetMapping(params = {"id"}, produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<Shoes> getShoes(@RequestParam(value = "id") int id){
+        logger.info("Fetching Shoes with id="+id);
+        if(id<1){
+            logger.warn("Bad request");
+            return new ResponseEntity<Shoes>(HttpStatus.BAD_REQUEST);
+        }
         Shoes shoes = shoesJDBCTemplate.getEntity(id);
-
+        if(shoes==null){
+            logger.warn("With Shoes id="+id+" not found");
+            return new ResponseEntity<Shoes>(HttpStatus.NOT_FOUND);
+        }
         shoes.setBrand(brandJDBCTemplate.getEntity(shoes.getIdBrand()));
         shoes.setMaterial(materialJDBCTemplate.getEntity(shoes.getIdMaterial()));
         List<ColorShoes> colorShoes = colorShoesJDBCTemplate.getListEntityByShoes(id);
@@ -71,23 +80,40 @@ class ShoesController {
             sizes.add(sizeJDBCTemplate.getEntity(i.getIdSize()));
         }
         shoes.setSizes(sizes);
-        return shoes;
+        return new ResponseEntity<Shoes>(shoes,HttpStatus.OK);
     }
 
     @GetMapping()
-    public List<Shoes> getListShoes(){
-        return shoesJDBCTemplate.getListEntity();
+    public ResponseEntity<List<Shoes>> getListShoes(){
+        logger.info("Fetching List Shoes");
+        List<Shoes> shoes = shoesJDBCTemplate.getListEntity();
+        if(shoes.isEmpty()){
+            logger.warn("List Shoes not found");
+            return new ResponseEntity<List<Shoes>>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<List<Shoes>>(shoes, HttpStatus.OK);
     }
 
     @GetMapping(params = {"minPrice","maxPrice"})
-    public List<Shoes> getListShoesByPriceMinMax(@RequestParam(value = "minPrice")  int min,@RequestParam(value = "maxPrice")  int max){
-        return shoesJDBCTemplate.getListEntityByPrice(min,max+1);
+    public ResponseEntity<List<Shoes>> getListShoesByPriceMinMax(@RequestParam(value = "minPrice")  int min,@RequestParam(value = "maxPrice")  int max){
+        logger.info("Fetching List Shoes with min,max price");
+        List<Shoes> shoes = shoesJDBCTemplate.getListEntityByPrice(min,max+1);
+        if(shoes.isEmpty()){
+            logger.warn("List Shoes not found");
+            return new ResponseEntity<List<Shoes>>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<List<Shoes>>(shoes, HttpStatus.OK);
     }
 
     @GetMapping(params = {"minSize","maxSize"})
-    public List<Shoes> getListShoesBySizeMinMax(@RequestParam(value = "minSize")  int min,@RequestParam(value = "maxSize")  int max){
+    public ResponseEntity<List<Shoes>> getListShoesBySizeMinMax(@RequestParam(value = "minSize")  int min,@RequestParam(value = "maxSize")  int max){
+        logger.info("Fetching List Shoes with min,max size");
         Set<Shoes> shoes = new HashSet<Shoes>();
         List<Size> sizes = sizeJDBCTemplate.getListEntityByMinMax(min,max);
+        if(sizes.isEmpty()){
+            logger.warn("List Shoes not found");
+            return new ResponseEntity<List<Shoes>>(HttpStatus.NO_CONTENT);
+        }
         List<SizeShoes> sizeShoes = new ArrayList<SizeShoes>();
         for(Size s: sizes){
             sizeShoes.addAll(sizeShoesJDBCTemplate.getListEntityBySize(s.getId()));
@@ -95,35 +121,40 @@ class ShoesController {
         for(SizeShoes s: sizeShoes){
             shoes.add(shoesJDBCTemplate.getEntity(s.getIdShoes()));
         }
-        return new ArrayList<Shoes>(shoes);
+        if(sizes.isEmpty()){
+            logger.warn("List Shoes not found");
+            return new ResponseEntity<List<Shoes>>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<List<Shoes>>(new ArrayList<Shoes>(shoes),HttpStatus.OK);
     }
 
     @PostMapping()
-    public void createShoes(@RequestBody Shoes shoes){
-
+    public ResponseEntity<Void> createShoes(@RequestBody Shoes shoes){
+        logger.info("Create shoes");
         shoesJDBCTemplate.create(shoes);
+        return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
 
     @DeleteMapping(params = {"id"})
-    public void deleteShoes(@RequestParam(value = "id")  int id) {
-
+    public ResponseEntity<Void> deleteShoes(@RequestParam(value = "id")  int id) {
+        logger.info("Delete shoes with id="+id);
+        Shoes shoes = shoesJDBCTemplate.getEntity(id);
+        if (shoes == null) {
+            logger.warn("Shoes not found");
+            return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+        }
         shoesJDBCTemplate.delete(id);
+        return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
     }
 
     @PutMapping(params = {"id"})
-    public void updateShoes(@RequestBody Shoes shoes, @RequestParam(value = "id") int id) {
-
-
+    public ResponseEntity<Void> updateShoes(@RequestBody Shoes shoes, @RequestParam(value = "id") int id) {
+        logger.info("Update shoes with id="+id);
+        if (shoesJDBCTemplate.getEntity(id) == null) {
+            logger.warn("Shoes not found");
+            return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+        }
         shoesJDBCTemplate.update(id,shoes);
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
-
-    @ResponseStatus( value = HttpStatus.BAD_REQUEST )
-    public class BadRequestException extends RuntimeException{
-
-    }
-    @ResponseStatus( value = HttpStatus.NOT_FOUND )
-    public class ResourceNotFoundException extends RuntimeException{
-
-    }
-
 }

@@ -3,19 +3,19 @@ package by.training.rest.model;
 public class Cart {
 
     private int id;
-    private int idUser;
+    private String username;
     private int idShoes;
 
     public Cart(){}
 
-    public Cart(int id, int idUser, int idShoes) {
+    public Cart(int id, String username, int idShoes) {
         this.id = id;
-        this.idUser = idUser;
+        this.username = username;
         this.idShoes = idShoes;
     }
 
-    public Cart(int idUser, int idShoes) {
-        this.idUser = idUser;
+    public Cart(String username, int idShoes) {
+        this.username = username;
         this.idShoes = idShoes;
     }
     public int getId() {
@@ -26,12 +26,12 @@ public class Cart {
         this.id = id;
     }
 
-    public int getIdUser() {
-        return idUser;
+    public String getUsername() {
+        return username;
     }
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public int getIdShoes() {
@@ -41,4 +41,14 @@ public class Cart {
     public void setIdShoes(int idShoes) {
         this.idShoes = idShoes;
     }
+
+    public Shoes getShoes() {
+        return shoes;
+    }
+
+    public void setShoes(Shoes shoes) {
+        this.shoes = shoes;
+    }
+
+    private Shoes shoes;
 }

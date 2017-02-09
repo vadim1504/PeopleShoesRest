@@ -54,6 +54,5 @@ public class PriceClient extends WebServiceGatewaySupport {
         request.setPriceEu(price.getPriceEu());
         request.setPriceRu(price.getPriceRu());
         getWebServiceTemplate().marshalSendAndReceive(request, new SoapActionCallback("http://localhost:8080/spring4soap-1/soap/updatePriceResponse"));
-
     }
 }

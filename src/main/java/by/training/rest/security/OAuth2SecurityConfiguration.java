@@ -3,9 +3,11 @@ package by.training.rest.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
@@ -15,6 +17,7 @@ import org.springframework.security.oauth2.provider.approval.TokenStoreUserAppro
 import org.springframework.security.oauth2.provider.request.DefaultOAuth2RequestFactory;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
+
 
 import javax.sql.DataSource;
 
@@ -36,11 +39,27 @@ public class OAuth2SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 		http
-		.csrf().disable()
-		.anonymous().disable()
-	  	.authorizeRequests()
-	  	.antMatchers("/oauth/token").permitAll();
-    }
+				//.cors().and()
+				.csrf().disable()
+				.anonymous().disable()
+				.authorizeRequests()
+				.antMatchers("/oauth/token").permitAll();
+	}
+
+	/*@Bean
+	CorsConfigurationSource corsConfigurationSource(){
+		CorsConfiguration corsConfiguration = new CorsConfiguration();
+		corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:63342"));
+		corsConfiguration.setAllowedMethods(Arrays.asList("GET","POST","OPTIONS","PUT","DELETE"));
+		UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource = new UrlBasedCorsConfigurationSource();
+		urlBasedCorsConfigurationSource.registerCorsConfiguration("/**",corsConfiguration);
+		return urlBasedCorsConfigurationSource;
+	}*/
+
+	@Override
+	public void configure(WebSecurity web) throws Exception{
+		web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**");
+	}
 
     @Override
     @Bean

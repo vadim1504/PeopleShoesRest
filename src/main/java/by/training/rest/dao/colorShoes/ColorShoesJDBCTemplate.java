@@ -1,7 +1,9 @@
 package by.training.rest.dao.colorShoes;
 
 import by.training.rest.dao.AbstractDAO;
+import by.training.rest.dao.user.UserMapper;
 import by.training.rest.model.ColorShoes;
+import by.training.rest.model.User;
 
 import java.util.List;
 
@@ -12,8 +14,12 @@ public class ColorShoesJDBCTemplate extends AbstractDAO<ColorShoes,Integer> {
     }
 
     public ColorShoes getEntity(Integer id) {
-        ColorShoes colorShoes = jdbcTemplateObject.queryForObject(env.getProperty("getColorShoes"), new Object[]{id}, new ColorShoesMapper());
-        return colorShoes;
+        List<ColorShoes> colorShoesList = jdbcTemplateObject.query(env.getProperty("getColorShoes"), new Object[]{id}, new ColorShoesMapper());
+        if(colorShoesList.isEmpty()){
+            return null;
+        }else{
+            return colorShoesList.get(0);
+        }
     }
 
     public List<ColorShoes> getListEntity() {

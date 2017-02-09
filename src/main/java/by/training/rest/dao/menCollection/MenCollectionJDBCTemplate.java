@@ -1,7 +1,9 @@
 package by.training.rest.dao.menCollection;
 
 import by.training.rest.dao.AbstractDAO;
+import by.training.rest.dao.user.UserMapper;
 import by.training.rest.model.MenCollection;
+import by.training.rest.model.User;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
@@ -14,8 +16,12 @@ public class MenCollectionJDBCTemplate extends AbstractDAO<MenCollection,Integer
     }
 
     public MenCollection getEntity(Integer id) {
-        MenCollection menCollection = jdbcTemplateObject.queryForObject(env.getProperty("getMenCollection"), new Object[]{id}, new MenCollectionMapper());
-        return menCollection;
+        List<MenCollection> menCollectionList = jdbcTemplateObject.query(env.getProperty("getMenCollection"), new Object[]{id}, new MenCollectionMapper());
+        if(menCollectionList.isEmpty()){
+            return null;
+        }else{
+            return menCollectionList.get(0);
+        }
     }
 
     public List<MenCollection> getListEntity() {

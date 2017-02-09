@@ -1,5 +1,6 @@
 package by.training.rest.security;
 
+
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -7,6 +8,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.error.OAuth2AccessDeniedHandler;
+
 
 @Configuration
 @EnableResourceServer
@@ -25,6 +27,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 		anonymous().disable()
 		.requestMatchers().antMatchers("/**")
 		.and().authorizeRequests()
+				.antMatchers (HttpMethod.GET, "/role").permitAll()
 				.antMatchers (HttpMethod.GET, "/users").hasRole("ADMIN")
 				.antMatchers (HttpMethod.POST, "/brand").hasRole("ADMIN")
 				.antMatchers (HttpMethod.POST, "/cart").hasRole("USER")
@@ -51,5 +54,4 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 				.antMatchers (HttpMethod.DELETE, "/users/**").hasRole("ADMIN")
 				.and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
 	}
-
 }
