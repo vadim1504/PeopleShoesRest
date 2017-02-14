@@ -4,9 +4,11 @@ import by.training.rest.dao.AbstractDAO;
 import by.training.rest.dao.user.UserMapper;
 import by.training.rest.model.ColorShoes;
 import by.training.rest.model.User;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 
+@Configuration
 public class ColorShoesJDBCTemplate extends AbstractDAO<ColorShoes,Integer> {
 
     public void create(ColorShoes entity) {

@@ -4,9 +4,11 @@ import by.training.rest.dao.AbstractDAO;
 import by.training.rest.dao.sizeShoes.SizeShoesMapper;
 import by.training.rest.model.CollectionShoes;
 import by.training.rest.model.SizeShoes;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 
+@Configuration
 public class CollectionShoesJDBCTemplate extends AbstractDAO<CollectionShoes,Integer> {
 
     public void create(CollectionShoes entity) {

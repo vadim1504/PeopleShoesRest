@@ -4,9 +4,11 @@ import by.training.rest.dao.AbstractDAO;
 import by.training.rest.dao.user.UserMapper;
 import by.training.rest.model.Size;
 import by.training.rest.model.User;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 
+@Configuration
 public class SizeJDBCTemplate extends AbstractDAO<Size,Integer> {
 
     public void create(Size entity) {

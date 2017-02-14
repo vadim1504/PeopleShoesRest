@@ -2,10 +2,11 @@ package by.training.rest.dao.user;
 
 import by.training.rest.dao.AbstractDAO;
 import by.training.rest.model.User;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 
-
+@Configuration
 public class UserJDBCTemplate extends AbstractDAO<User,String> {
 
     public void create(User entity) {

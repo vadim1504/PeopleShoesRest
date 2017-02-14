@@ -4,9 +4,11 @@ import by.training.rest.dao.AbstractDAO;
 import by.training.rest.dao.brand.BrandMapper;
 import by.training.rest.model.Brand;
 import by.training.rest.model.Cart;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 
+@Configuration
 public class CartJDBCTemplate extends AbstractDAO<Cart,Integer> {
 
     public void create(Cart entity) {

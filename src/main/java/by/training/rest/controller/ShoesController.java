@@ -121,7 +121,7 @@ class ShoesController {
         for(SizeShoes s: sizeShoes){
             shoes.add(shoesJDBCTemplate.getEntity(s.getIdShoes()));
         }
-        if(sizes.isEmpty()){
+        if(shoes.isEmpty()){
             logger.warn("List Shoes not found");
             return new ResponseEntity<List<Shoes>>(HttpStatus.NO_CONTENT);
         }

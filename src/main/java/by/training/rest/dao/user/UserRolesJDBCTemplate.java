@@ -3,9 +3,11 @@ package by.training.rest.dao.user;
 
 import by.training.rest.dao.AbstractDAO;
 import by.training.rest.model.UserRoles;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 
+@Configuration
 public class UserRolesJDBCTemplate extends AbstractDAO<UserRoles,String> {
 
     public void create(UserRoles entity) {

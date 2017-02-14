@@ -1,11 +1,7 @@
 package by.training.rest.dao.brand;
 
 import by.training.rest.dao.AbstractDAO;
-import by.training.rest.dao.menCollection.MenCollectionMapper;
-import by.training.rest.dao.shoes.ShoesJDBCTemplate;
 import by.training.rest.model.Brand;
-import by.training.rest.model.MenCollection;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.List;

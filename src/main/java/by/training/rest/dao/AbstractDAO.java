@@ -1,6 +1,7 @@
 package by.training.rest.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -8,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import javax.sql.DataSource;
 import java.util.List;
 
+@Configuration
 @PropertySource(value = "classpath:storedProcedures.properties")
 public abstract class AbstractDAO<E,K> {
 
@@ -16,9 +18,9 @@ public abstract class AbstractDAO<E,K> {
 
     private DataSource dataSource;
     public JdbcTemplate jdbcTemplateObject;
-
-    public void setDataSource(DataSource ds) {
-        this.dataSource = ds;
+    @Autowired
+    public void setDataSource(DataSource dataSource) {
+        this.dataSource = dataSource;
         this.jdbcTemplateObject = new JdbcTemplate(dataSource);
     }
 
