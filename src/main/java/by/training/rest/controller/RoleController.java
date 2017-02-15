@@ -1,15 +1,14 @@
 package by.training.rest.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.oauth2.provider.OAuth2Authentication;
-import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.security.Principal;
 import java.util.Collection;
 
 @Configuration
@@ -17,16 +16,17 @@ import java.util.Collection;
 @RequestMapping(value = "/role")
 class RoleController {
 
-    @Autowired
-    public TokenStore tokenStore;
+    @GetMapping()
+    public String getUser(Principal principal){
 
-    @GetMapping(params = {"access_token"})
-    public String getUser(@RequestParam(value = "access_token") String  access_token){
+        UserDetails currentUser = (UserDetails) ((Authentication) principal).getPrincipal();
         String role="";
-        /*Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();*/
-        OAuth2Authentication oAuth2Authentication = tokenStore.readAuthentication(access_token);
-        Collection<GrantedAuthority> collection = oAuth2Authentication.getAuthorities();
+        /*
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        */
+      //  OAuth2Authentication oAuth2Authentication = tokenStore.readAuthentication(access_token);
+        Collection<GrantedAuthority> collection = (Collection<GrantedAuthority>) currentUser.getAuthorities();
         for (GrantedAuthority i: collection){
           role = i.getAuthority();
         }

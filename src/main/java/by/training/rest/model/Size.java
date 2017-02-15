@@ -25,6 +25,19 @@ public class Size {
         this.sizeUK = sizeUK;
     }
 
+    public static boolean isEmptyFields(Size entity){
+        if(entity==null){
+            return true;
+        }if(entity.getSizeEU()==null){
+            return true;
+        }if(entity.getSizeUK()==null){
+            return true;
+        }if(entity.getSizeUS()==null){
+            return true;
+        }
+        return false;
+    }
+
     public int getId() {
         return id;
     }

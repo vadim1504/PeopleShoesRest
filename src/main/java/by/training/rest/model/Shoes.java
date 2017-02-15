@@ -74,7 +74,18 @@ public class Shoes {
         this.menCollections = menCollections;
     }
 
-
+    public static boolean isEmptyFields(Shoes entity){
+        if(entity==null){
+            return true;
+        }if(entity.getNameRu()==null){
+            return true;
+        }if(entity.getNameEu()==null){
+            return true;
+        }if(entity.getImage()==null) {
+            return true;
+        }
+        return false;
+    }
     public int getId() {
         return id;
     }

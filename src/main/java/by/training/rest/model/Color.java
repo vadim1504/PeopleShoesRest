@@ -25,6 +25,17 @@ public class Color {
         this.image = image;
     }
 
+    public static boolean isEmptyFields(Color entity){
+        if(entity==null){
+            return true;
+        }if(entity.getNameEu()==null){
+            return true;
+        }if(entity.getNameRu()==null){
+            return true;
+        }
+        return false;
+    }
+
     public int getId() {
         return id;
     }

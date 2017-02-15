@@ -18,6 +18,16 @@ public class Cart {
         this.username = username;
         this.idShoes = idShoes;
     }
+
+    public static boolean isEmptyFields(Cart entity){
+        if(entity==null)
+            return true;
+        if(entity.getUsername()==null)
+            return true;
+        if(entity.getIdShoes()<1)
+            return true;
+        return false;
+    }
     public int getId() {
         return id;
     }

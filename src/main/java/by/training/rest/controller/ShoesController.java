@@ -51,10 +51,6 @@ class ShoesController {
     @GetMapping(params = {"id"}, produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<Shoes> getShoes(@RequestParam(value = "id") int id){
         logger.info("Fetching Shoes with id="+id);
-        if(id<1){
-            logger.warn("Bad request");
-            return new ResponseEntity<Shoes>(HttpStatus.BAD_REQUEST);
-        }
         Shoes shoes = shoesJDBCTemplate.getEntity(id);
         if(shoes==null){
             logger.warn("With Shoes id="+id+" not found");
@@ -131,6 +127,12 @@ class ShoesController {
     @PostMapping()
     public ResponseEntity<Void> createShoes(@RequestBody Shoes shoes){
         logger.info("Create shoes");
+        if(brandJDBCTemplate.getEntity(shoes.getIdBrand())==null)
+            return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+        if(materialJDBCTemplate.getEntity(shoes.getIdMaterial())==null)
+            return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+        if(Shoes.isEmptyFields(shoes))
+            return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
         shoesJDBCTemplate.create(shoes);
         return new ResponseEntity<Void>(HttpStatus.CREATED);
     }

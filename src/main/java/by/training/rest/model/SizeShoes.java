@@ -22,6 +22,16 @@ public class SizeShoes {
         this.amount = amount;
     }
 
+    public static boolean isEmptyFields(SizeShoes entity){
+        if(entity==null){
+            return true;
+        }if(entity.getIdShoes()<1){
+            return true;
+        }if(entity.getIdSize()<1)
+            return true;
+        return false;
+    }
+
     public int getId() {
         return id;
     }

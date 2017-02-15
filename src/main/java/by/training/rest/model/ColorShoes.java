@@ -22,6 +22,16 @@ public class ColorShoes {
         this.amount = amount;
     }
 
+    public static boolean isEmptyFields(ColorShoes entity){
+        if(entity==null){
+            return true;
+        }if(entity.getIdShoes()<1){
+            return true;
+        }if(entity.getIdColor()<1)
+            return true;
+        return false;
+    }
+
     public int getAmount() {
         return amount;
     }

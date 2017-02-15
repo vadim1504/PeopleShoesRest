@@ -7,6 +7,7 @@ public class AuthTokenInfo {
 	private String refresh_token;
 	private int expires_in;
 	private String scope;
+
 	public String getAccess_token() {
 		return access_token;
 	}

@@ -10,10 +10,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @Configuration
@@ -25,8 +27,6 @@ public class UserController {
     public UserJDBCTemplate userJDBCTemplate;
     @Autowired
     public UserRolesJDBCTemplate userRolesJDBCTemplate;
-    @Autowired
-    public TokenStore tokenStore;
     private final Logger logger = Logger.getLogger(UserController.class);
 
     @GetMapping(params = {"username"},produces = {MediaType.APPLICATION_JSON_VALUE})
@@ -78,8 +78,8 @@ public class UserController {
     }
 
     @PutMapping()
-    public ResponseEntity<Void> updateUser(@RequestBody User user, @RequestParam(value = "access_token") String  access_token) {
-        UserDetails userDetails = (UserDetails) tokenStore.readAuthentication(access_token).getUserAuthentication().getPrincipal();
+    public ResponseEntity<Void> updateUser(@RequestBody User user,Principal principal) {
+        UserDetails userDetails = (UserDetails) ((Authentication) principal).getPrincipal();
         User currentUser = userJDBCTemplate.getEntity(userDetails.getUsername());
         if (currentUser==null) {
             return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);

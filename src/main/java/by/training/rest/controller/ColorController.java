@@ -35,7 +35,6 @@ public class ColorController {
     @GetMapping(params = {"id"})
     public ResponseEntity<Color> getColor(@RequestParam(value = "id") int id){
         logger.info("Fetching color with id="+id);
-
         Color color = colorJDBCTemplate.getEntity(id);
         if (color == null) {
             logger.warn("With color id=" + id + " not found");
@@ -53,7 +52,6 @@ public class ColorController {
     @GetMapping
     public ResponseEntity<List<Color>> getListColor(){
         logger.info("Fetching List color");
-
         List<Color> colors = colorJDBCTemplate.getListEntity();
         if (colors.isEmpty()||colors==null) {
             logger.warn("List color not found");
@@ -65,7 +63,8 @@ public class ColorController {
     @PostMapping
     public ResponseEntity<Void>  createColor(@RequestBody Color color){
         logger.info("Create color");
-
+        if (Color.isEmptyFields(color))
+            return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
         colorJDBCTemplate.create(color);
         return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
@@ -85,7 +84,8 @@ public class ColorController {
     @PutMapping(params = {"id"})
     public ResponseEntity<Void> updateColor(@RequestBody Color color, @RequestParam(value = "id") int id) {
         logger.info("Update color with id="+id);
-
+        if (Color.isEmptyFields(color))
+            return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
         if (colorJDBCTemplate.getEntity(id) == null) {
             logger.warn("color not found");
             return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);

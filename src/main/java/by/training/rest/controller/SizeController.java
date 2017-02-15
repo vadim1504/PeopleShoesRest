@@ -62,6 +62,8 @@ public class SizeController {
     @PostMapping()
     public ResponseEntity<Void> createSize(@RequestBody Size size) {
         logger.info("Create size");
+        if (Size.isEmptyFields(size))
+            return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
         sizeJDBCTemplate.create(size);
         return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
@@ -80,6 +82,8 @@ public class SizeController {
         if (sizeJDBCTemplate.getEntity(id)==null) {
             return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
         }
+        if (Size.isEmptyFields(size))
+            return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
         sizeJDBCTemplate.update(id,size);
         return new ResponseEntity<Void>(HttpStatus.OK);
     }

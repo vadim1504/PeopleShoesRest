@@ -9,7 +9,6 @@ public class Material {
     private String nameEu;
     private List<Shoes> shoesList;
 
-
     public Material(){}
 
     public Material(int id, String nameRu, String nameEu) {
@@ -21,6 +20,17 @@ public class Material {
     public Material(String nameRu, String nameEu) {
         this.nameRu = nameRu;
         this.nameEu = nameEu;
+    }
+
+    public static boolean isEmptyFields(Material entity){
+        if(entity==null){
+            return true;
+        }if(entity.getNameRu()==null){
+            return true;
+        }if(entity.getNameEu()==null){
+            return true;
+        }
+        return false;
     }
 
     public int getId() {

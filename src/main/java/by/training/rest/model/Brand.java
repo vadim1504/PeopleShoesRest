@@ -28,6 +28,21 @@ public class Brand {
         this.logo=logo;
     }
 
+    public static boolean isEmptyFields(Brand entity){
+        if(entity==null){
+            return true;
+        }if(entity.getName()==null){
+            return true;
+        }if(entity.getInfoEu()==null){
+            return true;
+        }if(entity.getInfoRu()==null){
+            return true;
+        }if(entity.getLogo()==null){
+            return true;
+        }
+        return false;
+    }
+
     public int getId() {
         return id;
     }

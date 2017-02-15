@@ -51,6 +51,8 @@ public class MaterialController {
     @PostMapping()
     public ResponseEntity<Void> createMaterial(@RequestBody Material material){
         logger.info("Create color");
+        if (Material.isEmptyFields(material))
+            return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
         materialJDBCTemplate.create(material);
         return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
@@ -69,6 +71,8 @@ public class MaterialController {
     @PutMapping(params = {"id"})
     public ResponseEntity<Void> updateMaterial(@RequestBody Material material, @RequestParam(value = "id") int id) {
         logger.info("Update material with id="+id);
+        if (Material.isEmptyFields(material))
+            return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
         if (materialJDBCTemplate.getEntity(id) == null) {
             logger.warn("material not found");
             return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);

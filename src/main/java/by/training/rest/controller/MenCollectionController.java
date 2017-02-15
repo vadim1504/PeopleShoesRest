@@ -61,6 +61,8 @@ public class MenCollectionController {
     @PostMapping()
     public ResponseEntity<Void> createMenCollection(@RequestBody MenCollection menCollection){
         logger.info("Create collection");
+        if (MenCollection.isEmptyFields(menCollection))
+            return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
         menCollectionJDBCTemplate.create(menCollection);
         return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
@@ -79,6 +81,8 @@ public class MenCollectionController {
     @PutMapping(params = {"id"})
     public ResponseEntity<Void> updateMenCollection(@RequestBody MenCollection menCollection, @RequestParam(value = "id") int id) {
         logger.info("Update collection with id="+id);
+        if (MenCollection.isEmptyFields(menCollection))
+            return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
         if (menCollectionJDBCTemplate.getEntity(id) == null) {
             logger.warn("collection not found");
             return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);

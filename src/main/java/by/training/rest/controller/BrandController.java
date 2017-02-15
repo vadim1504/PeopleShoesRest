@@ -30,10 +30,6 @@ public class BrandController {
     @GetMapping(params = {"id"},produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<Brand> getBrand(@RequestParam(value = "id") int id){
         logger.info("Fetching Brand with id="+id);
-        if(id<1){
-            logger.warn("Bad request");
-            return new ResponseEntity<Brand>(HttpStatus.BAD_REQUEST);
-        }
         Brand brand = brandJDBCTemplate.getEntity(id);
         if (brand == null) {
             logger.warn("With brand id=" + id + " not found");
@@ -58,6 +54,8 @@ public class BrandController {
     @PostMapping()
     public ResponseEntity<Void> createBrand(@RequestBody Brand brand) {
         logger.info("Create brand");
+        if (Brand.isEmptyFields(brand))
+            return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
         brandJDBCTemplate.create(brand);
         return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
@@ -76,6 +74,8 @@ public class BrandController {
     @PutMapping(params = {"id"})
     public ResponseEntity<Void> updateBrand(@RequestBody Brand brand, @RequestParam(value = "id") int id) {
         logger.info("Update brand with id="+id);
+        if (Brand.isEmptyFields(brand))
+            return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
         if (brandJDBCTemplate.getEntity(id) == null)
         {
             logger.warn("Brand not found");

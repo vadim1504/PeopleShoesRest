@@ -34,6 +34,18 @@ public class MenCollection {
         this.infoRu = infoRu;
     }
 
+    public static boolean isEmptyFields(MenCollection entity){
+        if(entity==null){
+            return true;
+        }if(entity.getCollectionNameEu()==null){
+            return true;
+        }if(entity.getCollectionNameRu()==null){
+            return true;
+        }if(entity.getImage()==null){
+            return true;
+        }
+        return false;
+    }
     public int getId() {
         return id;
     }
