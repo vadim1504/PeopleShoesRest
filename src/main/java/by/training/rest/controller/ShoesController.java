@@ -79,6 +79,16 @@ class ShoesController {
         return new ResponseEntity<Shoes>(shoes,HttpStatus.OK);
     }
 
+    @GetMapping(params = {"page","size"})
+    public ResponseEntity<List<Shoes>> getListShoesByNpage(@RequestParam(value="page") int p,@RequestParam(value="size") int s){
+        List<Shoes> shoes = shoesJDBCTemplate.getListEntityNPage(p,s);
+        if(shoes.isEmpty()){
+            logger.warn("List Shoes not found");
+            return new ResponseEntity<List<Shoes>>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<List<Shoes>>(shoes, HttpStatus.OK);
+    }
+
     @GetMapping()
     public ResponseEntity<List<Shoes>> getListShoes(){
         logger.info("Fetching List Shoes");
@@ -134,6 +144,22 @@ class ShoesController {
         if(Shoes.isEmptyFields(shoes))
             return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
         shoesJDBCTemplate.create(shoes);
+        int id = shoesJDBCTemplate.getIdShoes(shoes);
+        if(shoes.getColorListId()!=null) {
+            for (int i : shoes.getColorListId()) {
+                colorShoesJDBCTemplate.create(new ColorShoes(i, id, 1));
+            }
+        }
+        if(shoes.getMenCollectionsId()!=null) {
+            for (int i : shoes.getMenCollectionsId()) {
+                collectionShoesJDBCTemplate.create(new CollectionShoes(i, id));
+            }
+        }
+        if (shoes.getSizesId()!=null) {
+            for (int i : shoes.getSizesId()) {
+                sizeShoesJDBCTemplate.create(new SizeShoes(i, id, 1));
+            }
+        }
         return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
 
@@ -155,6 +181,70 @@ class ShoesController {
         if (shoesJDBCTemplate.getEntity(id) == null) {
             logger.warn("Shoes not found");
             return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+        }
+        if(brandJDBCTemplate.getEntity(shoes.getIdBrand())==null)
+            return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+        if(materialJDBCTemplate.getEntity(shoes.getIdMaterial())==null)
+            return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+        if(Shoes.isEmptyFields(shoes))
+            return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+
+        if(shoes.getColorListId()!=null||shoes.getColorListId().isEmpty()) {
+            List<ColorShoes> colorShoes = colorShoesJDBCTemplate.getListEntityByShoes(id);
+            if(colorShoes.size()> shoes.getColorListId().size()){
+                for(int i=0;i<colorShoes.size()- shoes.getColorListId().size();i++){
+                    colorShoesJDBCTemplate.delete(colorShoes.get(i).getId());
+                    colorShoes.remove(i);
+                }
+            }
+            int y=0;
+            for (int i : shoes.getColorListId()) {
+                if(colorShoes.get(y)==null){
+                    colorShoesJDBCTemplate.create(new ColorShoes(i,id,1));
+                }else {
+                    int idColorShoes = colorShoes.get(y).getId();
+                    colorShoesJDBCTemplate.update(idColorShoes, new ColorShoes(i, id, 1));
+                }
+                y++;
+            }
+        }
+        if(shoes.getMenCollectionsId()!=null||shoes.getMenCollectionsId().isEmpty()) {
+            List<CollectionShoes> collectionShoes = collectionShoesJDBCTemplate.getListEntityByShoes(id);
+            if(collectionShoes.size()> shoes.getMenCollectionsId().size()){
+                for(int i=0;i<collectionShoes.size()- shoes.getMenCollectionsId().size();i++){
+                    collectionShoesJDBCTemplate.delete(collectionShoes.get(i).getId());
+                    collectionShoes.remove(i);
+                }
+            }
+            int y=0;
+            for (int i : shoes.getMenCollectionsId()) {
+                if(collectionShoes.get(y)==null){
+                    collectionShoesJDBCTemplate.create(new CollectionShoes(i,id));
+                }else {
+                    int idCollectionShoes = collectionShoes.get(y).getId();
+                    collectionShoesJDBCTemplate.update(idCollectionShoes, new CollectionShoes(i, id));
+                }
+                y++;
+            }
+        }
+        if(shoes.getSizesId()!=null||shoes.getSizesId().isEmpty()) {
+            List<SizeShoes> sizeShoes = sizeShoesJDBCTemplate.getListEntityByShoes(id);
+            if(sizeShoes.size()> shoes.getSizesId().size()){
+                for(int i=0;i<sizeShoes.size()- shoes.getSizesId().size();i++){
+                    sizeShoesJDBCTemplate.delete(sizeShoes.get(i).getId());
+                    sizeShoes.remove(i);
+                }
+            }
+            int y=0;
+            for (int i : shoes.getSizesId()) {
+                if(sizeShoes.get(y)==null){
+                    sizeShoesJDBCTemplate.create(new SizeShoes(i,id,1));
+                }else {
+                    int idSizeShoes = sizeShoes.get(y).getId();
+                    sizeShoesJDBCTemplate.update(idSizeShoes, new SizeShoes(i, id, 1));
+                }
+                y++;
+            }
         }
         shoesJDBCTemplate.update(id,shoes);
         return new ResponseEntity<Void>(HttpStatus.OK);

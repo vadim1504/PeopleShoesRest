@@ -17,7 +17,6 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="idShoes" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="priceEu" type="{http://www.w3.org/2001/XMLSchema}double"/>
  *         &lt;element name="priceRu" type="{http://www.w3.org/2001/XMLSchema}double"/>
@@ -31,7 +30,6 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "price", namespace = "http://peopleShoes.com/soap/price", propOrder = {
-    "id",
     "idShoes",
     "priceEu",
     "priceRu"
@@ -39,29 +37,11 @@ import javax.xml.bind.annotation.XmlType;
 public class Price {
 
     @XmlElement(namespace = "http://peopleShoes.com/soap/price")
-    protected int id;
-    @XmlElement(namespace = "http://peopleShoes.com/soap/price")
     protected int idShoes;
     @XmlElement(namespace = "http://peopleShoes.com/soap/price")
     protected double priceEu;
     @XmlElement(namespace = "http://peopleShoes.com/soap/price")
     protected double priceRu;
-
-    /**
-     * Gets the value of the id property.
-     * 
-     */
-    public int getId() {
-        return id;
-    }
-
-    /**
-     * Sets the value of the id property.
-     * 
-     */
-    public void setId(int value) {
-        this.id = value;
-    }
 
     /**
      * Gets the value of the idShoes property.

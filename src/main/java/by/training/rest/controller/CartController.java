@@ -69,10 +69,6 @@ public class CartController {
     public ResponseEntity<Void> deleteCart(@RequestParam(value = "id")  int id,Principal principal) {
         logger.info("Delete cart with id="+id);
         UserDetails userDetails = (UserDetails) ((Authentication) principal).getPrincipal();
-        if (cartJDBCTemplate.getEntity(id) == null) {
-            logger.warn("cart not found");
-            return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-        }
         cartJDBCTemplate.delete(id, userDetails.getUsername());
         return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
     }

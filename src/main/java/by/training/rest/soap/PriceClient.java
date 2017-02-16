@@ -43,13 +43,12 @@ public class PriceClient extends WebServiceGatewaySupport {
 
     public void deletePrice(int id){
         DeletePriceRequest request = new DeletePriceRequest();
-        request.setIdPrice(id);
+        request.setIdShoes(id);
         getWebServiceTemplate().marshalSendAndReceive(request, new SoapActionCallback("http://localhost:8080/spring4soap-1/soap/deletePriceResponse"));
     }
 
     public void updatePrice(Price price){
         UpdatePriceRequest request = new UpdatePriceRequest();
-        request.setId(price.getId());
         request.setIdShoes(price.getIdShoes());
         request.setPriceEu(price.getPriceEu());
         request.setPriceRu(price.getPriceRu());

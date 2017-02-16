@@ -19,11 +19,14 @@ public class ShoesJDBCTemplate extends AbstractDAO<Shoes,Integer> {
     public void create(Shoes entity) {
         try {
             jdbcTemplateObject.update(env.getProperty("createShoes"), entity.getNameRu(), entity.getNameEu(), entity.getIdBrand(), entity.getIdMaterial(), entity.getAmount(), entity.getImage());
-            int id = jdbcTemplateObject.queryForObject("select id from shoes where name_Ru=? and name_Eu=? and amount=? and id_brand=? and id_material=?", new Object[]{entity.getNameRu(), entity.getNameEu(), entity.getAmount(), entity.getIdBrand(), entity.getIdMaterial()}, Integer.class);
             Price price = entity.getPrice();
-            price.setIdShoes(id);
+            price.setIdShoes(getIdShoes(entity));
             priceClient.createPrice(price);
         }catch (Exception e){}// проверка или откат
+    }
+
+    public int getIdShoes(Shoes entity){
+        return jdbcTemplateObject.queryForObject("select id from shoes where name_Ru=? and name_Eu=? and amount=? and id_brand=? and id_material=?", new Object[]{entity.getNameRu(), entity.getNameEu(), entity.getAmount(), entity.getIdBrand(), entity.getIdMaterial()}, Integer.class);
     }
 
     public Shoes getEntity(Integer id) {
@@ -39,6 +42,15 @@ public class ShoesJDBCTemplate extends AbstractDAO<Shoes,Integer> {
             price = priceClient.getPrice(shoes.getId());
         }catch (Exception e){}
         shoes.setPrice(price);
+        return shoes;
+    }
+    public List<Shoes> getListEntityNPage(int p,int s){
+        List<Shoes> shoes = jdbcTemplateObject.query("SELECT * FROM shoes limit ? , ?",new Object[]{p*s,s},new ShoesMapper());
+        for (Shoes shoes1 : shoes) {
+            try {
+                shoes1.setPrice(priceClient.getPrice(shoes1.getId()));
+            }catch (Exception e){}
+        }
         return shoes;
     }
 

@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.*;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="idPrice" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="idShoes" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -25,28 +25,28 @@ import javax.xml.bind.annotation.*;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "idPrice"
+    "idShoes"
 })
 @XmlRootElement(name = "deletePriceRequest", namespace = "http://peopleShoes.com/soap/price")
 public class DeletePriceRequest {
 
     @XmlElement(namespace = "http://peopleShoes.com/soap/price")
-    protected int idPrice;
+    protected int idShoes;
 
     /**
-     * Gets the value of the idPrice property.
+     * Gets the value of the idShoes property.
      * 
      */
-    public int getIdPrice() {
-        return idPrice;
+    public int getIdShoes() {
+        return idShoes;
     }
 
     /**
-     * Sets the value of the idPrice property.
+     * Sets the value of the idShoes property.
      * 
      */
-    public void setIdPrice(int value) {
-        this.idPrice = value;
+    public void setIdShoes(int value) {
+        this.idShoes = value;
     }
 
 }

@@ -19,6 +19,34 @@ public class Shoes {
     private List<Color> colorList;
     private List<Size> sizes;
     private List<MenCollection> menCollections;
+    private List<Integer> colorListId;
+    private List<Integer> sizesId;
+
+    public List<Integer> getColorListId() {
+        return colorListId;
+    }
+
+    public void setColorListId(List<Integer> colorListId) {
+        this.colorListId = colorListId;
+    }
+
+    public List<Integer> getSizesId() {
+        return sizesId;
+    }
+
+    public void setSizesId(List<Integer> sizesId) {
+        this.sizesId = sizesId;
+    }
+
+    public List<Integer> getMenCollectionsId() {
+        return menCollectionsId;
+    }
+
+    public void setMenCollectionsId(List<Integer> menCollectionsId) {
+        this.menCollectionsId = menCollectionsId;
+    }
+
+    private List<Integer> menCollectionsId;
 
     public Shoes(){}
 
@@ -72,6 +100,19 @@ public class Shoes {
         this.colorList = colorList;
         this.sizes = sizes;
         this.menCollections = menCollections;
+    }
+
+    public Shoes(int idMaterial, int idBrand, String nameRu, String nameEu, int amount, String image, Price price, List<Integer> colorListId, List<Integer> sizesId, List<Integer> menCollectionsId) {
+        this.idMaterial = idMaterial;
+        this.idBrand = idBrand;
+        this.nameRu = nameRu;
+        this.nameEu = nameEu;
+        this.amount = amount;
+        this.image = image;
+        this.price = price;
+        this.colorListId = colorListId;
+        this.sizesId = sizesId;
+        this.menCollectionsId = menCollectionsId;
     }
 
     public static boolean isEmptyFields(Shoes entity){
